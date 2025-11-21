@@ -8,7 +8,7 @@ import {
 } from "react"
 import { cn } from "@/lib/utils"
 
-import { useCalendar } from "./use-calendar"
+import { useCalendar } from "../use-calendar"
 
 type CalendarContentProps = HTMLAttributes<HTMLDivElement> & {
 	asChild?: boolean

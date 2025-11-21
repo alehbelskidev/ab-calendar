@@ -3,7 +3,7 @@ import dayjs from "dayjs"
 import { forwardRef, type HTMLAttributes, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { useCalendar } from "./use-calendar"
+import { useCalendar } from "../use-calendar"
 
 type CalendarTodayButtonProps = HTMLAttributes<HTMLButtonElement> & {
 	asChild?: boolean

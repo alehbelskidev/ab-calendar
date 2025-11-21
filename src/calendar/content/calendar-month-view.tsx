@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from "dayjs"
 import { type HTMLAttributes, useMemo } from "react"
 import { cn } from "@/lib/utils"
-import { useCalendar } from "./use-calendar"
+import { useCalendar } from "../use-calendar"
 import { Plus } from "lucide-react"
 
 type CalendarMonthViewProps = HTMLAttributes<HTMLDivElement> & {

@@ -2,7 +2,7 @@ import * as Slot from "@radix-ui/react-slot"
 import { forwardRef, type HTMLAttributes } from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { useCalendar } from "./use-calendar"
+import { useCalendar } from "../use-calendar"
 
 type CalendarViewSwitcherButtonProps = HTMLAttributes<HTMLButtonElement> & {
 	view: "month" | "week" | "day"
