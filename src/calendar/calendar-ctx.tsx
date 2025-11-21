@@ -2,24 +2,32 @@ import dayjs, { type Dayjs } from "dayjs"
 import { createContext } from "react"
 import timezone from "dayjs/plugin/timezone"
 import utc from "dayjs/plugin/utc"
+import localeData from "dayjs/plugin/localeData"
 
 dayjs.extend(timezone)
 dayjs.extend(utc)
+dayjs.extend(localeData)
 
-export const DEFAULT_TIMZEONE = Intl.DateTimeFormat().resolvedOptions().timeZone
+const intlResolvedOptions = Intl.DateTimeFormat().resolvedOptions()
+export const DEFAULT_TIMZEONE = intlResolvedOptions.timeZone
+export const DEFAULT_LOCALE = intlResolvedOptions.locale.split("-")[0]
 
 type CalendarContextType = {
+	locale: string
 	timezone: string
 	today: Dayjs
 	view: "month" | "week" | "day"
 	onViewChange: (view: "month" | "week" | "day") => void
 	onTodayChange: (today: Dayjs) => void
+	onLocaleChange: (locale: string) => void
 }
 
 export const CalendarContext = createContext<CalendarContextType>({
+	locale: DEFAULT_LOCALE,
 	timezone: DEFAULT_TIMZEONE,
 	today: dayjs().tz(DEFAULT_TIMZEONE),
 	view: "month",
 	onViewChange: () => {},
 	onTodayChange: () => {},
+	onLocaleChange: () => {},
 })
