@@ -20,7 +20,7 @@ type CalendarMonthGridProps = HTMLAttributes<HTMLDivElement> & {
 const CalendarMonthGrid = ({
 	cellClass = "",
 	cellFormat = "DD",
-	todayCellClass = "text-blue-500",
+	todayCellClass = "font-bold",
 	differentMonthCellClass = "text-gray-400",
 	children,
 }: CalendarMonthGridProps) => {
