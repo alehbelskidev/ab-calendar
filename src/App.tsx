@@ -17,9 +17,9 @@ import {
 	CalendarTodayButton,
 	CalendarViewSwitcher,
 	CalendarViewSwitcherButton,
+	CalendarWeekGrid,
 	CalendarWeekHeader,
 	CalendarWeekView,
-	CalendarWeekGrid,
 } from "./calendar"
 
 function App() {
