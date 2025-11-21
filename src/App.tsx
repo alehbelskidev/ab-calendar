@@ -4,6 +4,9 @@ import {
 	CalendarDayView,
 	CalendarFooter,
 	CalendarHeader,
+	CalendarMonthCellButton,
+	CalendarMonthGrid,
+	CalendarMonthHeader,
 	CalendarMonthView,
 	CalendarProvider,
 	CalendarRoot,
@@ -33,10 +36,14 @@ function App() {
 					<CalendarTodayButton>Today</CalendarTodayButton>
 				</CalendarHeader>
 				<CalendarContent>
-					<CalendarMonthView
-						onCellClick={(date) => console.log(date)}
-						onHeaderCellClick={(date) => console.log(date)}
-					/>
+					<CalendarMonthView>
+						<CalendarMonthHeader
+							onHeaderCellClick={(date) => console.log(date)}
+						/>
+						<CalendarMonthGrid>
+							<CalendarMonthCellButton onClick={(date) => console.log(date)} />
+						</CalendarMonthGrid>
+					</CalendarMonthView>
 					<CalendarWeekView />
 					<CalendarDayView />
 				</CalendarContent>
