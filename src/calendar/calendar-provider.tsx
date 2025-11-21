@@ -24,6 +24,7 @@ export const CalendarProvider = ({
 }: CalendarProviderProps) => {
 	const [view, setView] = useState<"month" | "week" | "day">("month")
 	const [todayDate, setTodayDate] = useState<Dayjs>(today)
+	const [viewDate, setViewDate] = useState<Dayjs>(today)
 	const [locale, setLocale] = useState<string>(DEFAULT_LOCALE)
 
 	useEffect(() => {
@@ -42,23 +43,31 @@ export const CalendarProvider = ({
 		setView(newView)
 	}, [])
 
+	const handleViewDateChange = useCallback((newDate: Dayjs) => {
+		setViewDate(newDate)
+	}, [])
+
 	const value = useMemo(
 		() => ({
 			locale: DEFAULT_LOCALE,
 			timezone,
 			today: todayDate,
+			viewDate,
 			view,
 			onViewChange: handleViewChange,
 			onTodayChange: handleTodayChange,
 			onLocaleChange: handleLocaleChange,
+			onViewDateChange: handleViewDateChange,
 		}),
 		[
 			timezone,
 			todayDate,
+			viewDate,
 			view,
 			handleTodayChange,
 			handleViewChange,
 			handleLocaleChange,
+			handleViewDateChange,
 		]
 	)
 

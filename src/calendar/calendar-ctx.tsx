@@ -16,8 +16,10 @@ type CalendarContextType = {
 	locale: string
 	timezone: string
 	today: Dayjs
+	viewDate: Dayjs
 	view: "month" | "week" | "day"
 	onViewChange: (view: "month" | "week" | "day") => void
+	onViewDateChange: (viewDate: Dayjs) => void
 	onTodayChange: (today: Dayjs) => void
 	onLocaleChange: (locale: string) => void
 }
@@ -26,8 +28,10 @@ export const CalendarContext = createContext<CalendarContextType>({
 	locale: DEFAULT_LOCALE,
 	timezone: DEFAULT_TIMZEONE,
 	today: dayjs().tz(DEFAULT_TIMZEONE),
+	viewDate: dayjs().tz(DEFAULT_TIMZEONE),
 	view: "month",
 	onViewChange: () => {},
+	onViewDateChange: () => {},
 	onTodayChange: () => {},
 	onLocaleChange: () => {},
 })

@@ -13,14 +13,15 @@ const CalendarTodayButton = forwardRef<
 	HTMLButtonElement,
 	CalendarTodayButtonProps
 >(({ asChild = false, className, ...props }, ref) => {
-	const { today, onTodayChange } = useCalendar()
+	const { today, viewDate, onTodayChange, onViewDateChange } = useCalendar()
 	const Comp = asChild ? Slot : Button
 
 	const handleClick = useCallback(() => {
-		if (today.isSame(dayjs(), "day")) return
+		if (today.isSame(viewDate, "day")) return
 
 		onTodayChange(dayjs())
-	}, [onTodayChange, today])
+		onViewDateChange(dayjs())
+	}, [onTodayChange, onViewDateChange, today, viewDate])
 
 	return (
 		<Comp

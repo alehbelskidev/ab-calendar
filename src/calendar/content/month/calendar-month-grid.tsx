@@ -24,10 +24,10 @@ const CalendarMonthGrid = ({
 	differentMonthCellClass = "text-gray-400",
 	children,
 }: CalendarMonthGridProps) => {
-	const { today } = useCalendar()
+	const { today, viewDate } = useCalendar()
 
 	const cells = useMemo(() => {
-		const firstDayOfMonth = today.startOf("month")
+		const firstDayOfMonth = viewDate.startOf("month")
 		const startOfCalendarGrid = firstDayOfMonth.startOf("week")
 
 		return new Array(6 * 7).fill(0).map((_, index) => {
@@ -39,12 +39,12 @@ const CalendarMonthGrid = ({
 				title: date.format(cellFormat),
 				key: date.format("YYYY-MM-DD"),
 				gridClass: `col-start-${col + 1} row-start-${row + 1}`,
-				isCurrentMonth: date.isSame(today, "month"),
+				isCurrentMonth: date.isSame(viewDate, "month"),
 				isToday: date.isSame(today, "day"),
 				date,
 			}
 		})
-	}, [cellFormat, today])
+	}, [cellFormat, today, viewDate])
 
 	return (
 		<>
