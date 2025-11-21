@@ -1,5 +1,5 @@
 const CalendarWeekView = () => {
-    return <div data-calendar-view="week">Week View</div>
+	return <div data-calendar-view="week">Week View</div>
 }
 
 CalendarWeekView.displayName = "CalendarWeekView"
