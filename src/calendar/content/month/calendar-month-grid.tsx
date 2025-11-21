@@ -32,7 +32,7 @@ const CalendarMonthGrid = ({
 
 		return new Array(6 * 7).fill(0).map((_, index) => {
 			const date = startOfCalendarGrid.add(index, "day")
-			const row = Math.floor(index / 7)
+			const row = Math.floor(index / 7) + 1
 			const col = index % 7
 
 			return {
