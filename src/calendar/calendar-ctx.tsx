@@ -12,10 +12,14 @@ type CalendarContextType = {
   timezone: string
   today: Dayjs
   view: "month" | "week" | "day"
+  onViewChange: (view: "month" | "week" | "day") => void
+  onTodayChange: (today: Dayjs) => void
 }
 
 export const CalendarContext = createContext<CalendarContextType>({
   timezone: DEFAULT_TIMZEONE,
   today: dayjs().tz(DEFAULT_TIMZEONE),
   view: "month",
+  onViewChange: () => {},
+  onTodayChange: () => {}
 })

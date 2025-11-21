@@ -32,7 +32,7 @@ const CalendarContent = forwardRef<HTMLDivElement, CalendarContentProps>(
         })
 
         return recomposedChildren
-    }, [props.children])
+    }, [props.children, view])
 
     return (
       <Comp
