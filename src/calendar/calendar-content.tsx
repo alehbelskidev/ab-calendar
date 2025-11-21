@@ -1,11 +1,11 @@
-import {
-	type HTMLAttributes,
-	type ReactNode,
-	forwardRef,
-	useMemo,
-	isValidElement,
-} from "react"
 import * as Slot from "@radix-ui/react-slot"
+import {
+	forwardRef,
+	type HTMLAttributes,
+	isValidElement,
+	type ReactNode,
+	useMemo,
+} from "react"
 import { cn } from "@/lib/utils"
 
 import { useCalendar } from "./use-calendar"
@@ -51,6 +51,7 @@ const CalendarContent = forwardRef<HTMLDivElement, CalendarContentProps>(
 				ref={ref}
 				className={cn("w-full h-full flex-1", className)}
 				{...props}
+				// biome-ignore lint/correctness/noChildrenProp: required for this use case
 				children={recomposedChildren}
 			/>
 		)

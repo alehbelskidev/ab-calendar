@@ -1,7 +1,7 @@
-import { type HTMLAttributes, forwardRef } from "react"
 import * as Slot from "@radix-ui/react-slot"
-import { cn } from "@/lib/utils"
+import { forwardRef, type HTMLAttributes } from "react"
 import { ButtonGroup } from "@/components/ui/button-group"
+import { cn } from "@/lib/utils"
 
 type CalendarViewSwitcherProps = HTMLAttributes<HTMLDivElement> & {
 	asChild?: boolean

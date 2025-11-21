@@ -6,7 +6,8 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"includes": ["**", "!!src/components/ui/*"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -23,7 +24,7 @@
 				"useImportType": "off"
 			},
 			"nursery": {
-				"useSortedClasses": "error"
+				"useSortedClasses": "off"
 			}
 		}
 	},

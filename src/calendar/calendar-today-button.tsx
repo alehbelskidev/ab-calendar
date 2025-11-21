@@ -1,9 +1,9 @@
-import { type HTMLAttributes, forwardRef, useCallback } from "react"
-import { Button } from "@/components/ui/button"
 import * as Slot from "@radix-ui/react-slot"
+import dayjs from "dayjs"
+import { forwardRef, type HTMLAttributes, useCallback } from "react"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useCalendar } from "./use-calendar"
-import dayjs from "dayjs"
 
 type CalendarTodayButtonProps = HTMLAttributes<HTMLButtonElement> & {
 	asChild?: boolean
@@ -20,7 +20,7 @@ const CalendarTodayButton = forwardRef<
 		if (today.isSame(dayjs(), "day")) return
 
 		onTodayChange(dayjs())
-	}, [onTodayChange])
+	}, [onTodayChange, today])
 
 	return (
 		<Comp

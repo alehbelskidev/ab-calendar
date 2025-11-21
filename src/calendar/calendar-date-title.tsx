@@ -1,7 +1,7 @@
-import { type HTMLAttributes, forwardRef } from "react"
 import * as Slot from "@radix-ui/react-slot"
-import { useCalendar } from "./use-calendar"
+import { forwardRef, type HTMLAttributes } from "react"
 import { cn } from "@/lib/utils"
+import { useCalendar } from "./use-calendar"
 
 type CalendarDateTitleProps = HTMLAttributes<HTMLHeadingElement> & {
 	format?: string

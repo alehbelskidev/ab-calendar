@@ -1,11 +1,11 @@
+import dayjs, { Dayjs } from "dayjs"
 import {
-	useState,
-	useMemo,
 	type PropsWithChildren,
 	useCallback,
 	useEffect,
+	useMemo,
+	useState,
 } from "react"
-import dayjs, { Dayjs } from "dayjs"
 import {
 	CalendarContext,
 	DEFAULT_LOCALE,
@@ -28,15 +28,11 @@ export const CalendarProvider = ({
 
 	useEffect(() => {
 		dayjs.locale(locale)
-	}, [])
+	}, [locale])
 
-	const handleLocaleChange = useCallback(
-		(newLocale: string) => {
-			setLocale(newLocale)
-			dayjs.locale(newLocale)
-		},
-		[locale]
-	)
+	const handleLocaleChange = useCallback((newLocale: string) => {
+		setLocale(newLocale)
+	}, [])
 
 	const handleTodayChange = useCallback((newToday: Dayjs) => {
 		setTodayDate(newToday)
@@ -56,7 +52,14 @@ export const CalendarProvider = ({
 			onTodayChange: handleTodayChange,
 			onLocaleChange: handleLocaleChange,
 		}),
-		[timezone, todayDate, view, handleTodayChange, handleViewChange]
+		[
+			timezone,
+			todayDate,
+			view,
+			handleTodayChange,
+			handleViewChange,
+			handleLocaleChange,
+		]
 	)
 
 	return (

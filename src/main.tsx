@@ -1,10 +1,11 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import "./index.css"
-import App from "./App.tsx"
+import dayjs from "dayjs"
 import timezone from "dayjs/plugin/timezone"
 import utc from "dayjs/plugin/utc"
-import dayjs from "dayjs"
+import App from "./App.tsx"
+
 dayjs.extend(timezone)
 dayjs.extend(utc)
 

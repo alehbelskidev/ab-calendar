@@ -1,7 +1,8 @@
-import { useMemo, type HTMLAttributes } from "react"
 import dayjs, { Dayjs } from "dayjs"
+import { type HTMLAttributes, useMemo } from "react"
 import { cn } from "@/lib/utils"
 import { useCalendar } from "./use-calendar"
+import { Plus } from "lucide-react"
 
 type CalendarMonthViewProps = HTMLAttributes<HTMLDivElement> & {
 	headerCellFormat?: string
@@ -68,31 +69,39 @@ const CalendarMonthView = ({
 			{...props}
 		>
 			{headers.map(({ title, key, gridClass, date }) => (
-				<div
+				<button
+					type="button"
 					key={key}
 					className={cn(
-						"text-center font-semibold border-b",
+						"text-center font-semibold border-b cursor-pointer",
 						headerCellClass,
 						gridClass
 					)}
 					onClick={() => onHeaderCellClick?.(date)}
 				>
 					{title}
-				</div>
+				</button>
 			))}
 			{cells.map(({ title, key, gridClass, isCurrentMonth, isToday, date }) => (
 				<div
 					key={key}
 					className={cn(
-						"text-center border-b border-r",
+						"text-center border-b border-r flex flex-col",
 						!isCurrentMonth ? differentMonthCellClass : "",
 						isToday ? todayCellClass : "",
 						cellClass,
 						gridClass
 					)}
-					onClick={() => onCellClick?.(date)}
 				>
 					{title}
+					<button
+						type="button"
+						className="flex-1 py-2 w-full hover:bg-gray-50 group flex items-center justify-center transition-colors"
+						onClick={() => onCellClick?.(date)}
+						aria-label={date.format("YYYY-MM-DD")}
+					>
+						<Plus className="size-4 text-transparent group-hover:text-gray-300 transition-colors" />
+					</button>
 				</div>
 			))}
 		</div>

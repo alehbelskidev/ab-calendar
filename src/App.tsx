@@ -1,16 +1,16 @@
 import {
+	CalendarContent,
+	CalendarDateTitle,
+	CalendarDayView,
+	CalendarFooter,
+	CalendarHeader,
+	CalendarMonthView,
 	CalendarProvider,
 	CalendarRoot,
-	CalendarHeader,
-	CalendarFooter,
-	CalendarContent,
-	CalendarMonthView,
-	CalendarWeekView,
-	CalendarDayView,
-	CalendarDateTitle,
+	CalendarTodayButton,
 	CalendarViewSwitcher,
 	CalendarViewSwitcherButton,
-	CalendarTodayButton,
+	CalendarWeekView,
 } from "./calendar"
 
 function App() {
@@ -33,7 +33,10 @@ function App() {
 					<CalendarTodayButton>Today</CalendarTodayButton>
 				</CalendarHeader>
 				<CalendarContent>
-					<CalendarMonthView />
+					<CalendarMonthView
+						onCellClick={(date) => console.log(date)}
+						onHeaderCellClick={(date) => console.log(date)}
+					/>
 					<CalendarWeekView />
 					<CalendarDayView />
 				</CalendarContent>
