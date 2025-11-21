@@ -13,10 +13,13 @@ import {
 	CalendarMonthView,
 	CalendarProvider,
 	CalendarRoot,
+	CalendarTimeCol,
 	CalendarTodayButton,
 	CalendarViewSwitcher,
 	CalendarViewSwitcherButton,
+	CalendarWeekHeader,
 	CalendarWeekView,
+	CalendarWeekGrid,
 } from "./calendar"
 
 function App() {
@@ -54,7 +57,13 @@ function App() {
 								/>
 							</CalendarMonthGrid>
 						</CalendarMonthView>
-						<CalendarWeekView />
+						<CalendarWeekView>
+							<CalendarTimeCol colStart={1} />
+							<CalendarWeekHeader
+								onHeaderCellClick={(date) => console.log(date)}
+							/>
+							<CalendarWeekGrid />
+						</CalendarWeekView>
 						<CalendarDayView />
 					</CalendarContent>
 					<CalendarFooter>Footer</CalendarFooter>
