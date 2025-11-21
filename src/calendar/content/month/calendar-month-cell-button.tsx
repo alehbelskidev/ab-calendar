@@ -1,4 +1,4 @@
-import * as Slot from "@radix-ui/react-slot"
+import { Slot } from "@radix-ui/react-slot"
 import dayjs, { Dayjs } from "dayjs"
 import { Plus } from "lucide-react"
 import { forwardRef, type HTMLAttributes } from "react"
@@ -13,7 +13,7 @@ const CalendarMonthCellButton = forwardRef<
 	HTMLButtonElement,
 	CalendarMonthCellButtonProps
 >(({ date, asChild = false, className, onClick, ...props }, ref) => {
-	const Comp = asChild ? Slot.Root : "button"
+	const Comp = asChild ? Slot : "button"
 	const dateFallback = date ?? dayjs()
 
 	return (

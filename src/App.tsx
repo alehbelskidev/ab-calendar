@@ -4,6 +4,9 @@ import {
 	CalendarDayView,
 	CalendarFooter,
 	CalendarHeader,
+	CalendarHeaderNav,
+	CalendarHeaderNavNextButton,
+	CalendarHeaderNavPrevButton,
 	CalendarMonthCellButton,
 	CalendarMonthGrid,
 	CalendarMonthHeader,
@@ -22,6 +25,10 @@ function App() {
 			<CalendarRoot>
 				<CalendarHeader>
 					<CalendarDateTitle />
+					<CalendarHeaderNav>
+						<CalendarHeaderNavPrevButton />
+						<CalendarHeaderNavNextButton />
+					</CalendarHeaderNav>
 					<CalendarViewSwitcher>
 						<CalendarViewSwitcherButton view="month">
 							Month

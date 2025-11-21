@@ -1,18 +1,17 @@
 import { Slot } from "@radix-ui/react-slot"
 import { forwardRef, type HTMLAttributes } from "react"
+import { ButtonGroup } from "@/components/ui/button-group"
 import { cn } from "@/lib/utils"
 
-type CalendarHeaderProps = HTMLAttributes<HTMLDivElement> & {
+type CalendarHeaderNavProps = HTMLAttributes<HTMLDivElement> & {
 	asChild?: boolean
 }
 
-const CalendarHeader = forwardRef<HTMLDivElement, CalendarHeaderProps>(
+const CalendarHeaderNav = forwardRef<HTMLDivElement, CalendarHeaderNavProps>(
 	({ asChild = false, className, ...props }, ref) => {
-		const Comp = asChild ? Slot.Root : "div"
-
+		const Comp = asChild ? Slot : ButtonGroup
 		return (
 			<Comp
-				data-slot="calendar-header"
 				ref={ref}
 				className={cn("flex items-center justify-between", className)}
 				{...props}
@@ -21,6 +20,6 @@ const CalendarHeader = forwardRef<HTMLDivElement, CalendarHeaderProps>(
 	}
 )
 
-CalendarHeader.displayName = "CalendarHeader"
+CalendarHeaderNav.displayName = "CalendarHeaderNav"
 
-export default CalendarHeader
+export default CalendarHeaderNav

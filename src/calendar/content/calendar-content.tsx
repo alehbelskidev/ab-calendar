@@ -1,4 +1,4 @@
-import * as Slot from "@radix-ui/react-slot"
+import { Slot } from "@radix-ui/react-slot"
 import {
 	forwardRef,
 	type HTMLAttributes,
@@ -24,7 +24,7 @@ const VIEW_COMPONENTS = Object.keys(VIEWS_MAP)
 const CalendarContent = forwardRef<HTMLDivElement, CalendarContentProps>(
 	({ asChild = false, className, ...props }, ref) => {
 		const { view } = useCalendar()
-		const Comp = asChild ? Slot.Root : "div"
+		const Comp = asChild ? Slot : "div"
 
 		const recomposedChildren = useMemo(() => {
 			if (!Array.isArray(props.children)) return props.children

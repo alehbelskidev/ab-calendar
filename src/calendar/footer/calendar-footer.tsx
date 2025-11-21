@@ -1,4 +1,4 @@
-import * as Slot from "@radix-ui/react-slot"
+import { Slot } from "@radix-ui/react-slot"
 import { forwardRef, type HTMLAttributes } from "react"
 import { cn } from "@/lib/utils"
 

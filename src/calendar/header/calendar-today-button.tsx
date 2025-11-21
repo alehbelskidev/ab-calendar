@@ -1,4 +1,4 @@
-import * as Slot from "@radix-ui/react-slot"
+import { Slot } from "@radix-ui/react-slot"
 import dayjs from "dayjs"
 import { forwardRef, type HTMLAttributes, useCallback } from "react"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,7 @@ const CalendarTodayButton = forwardRef<
 	CalendarTodayButtonProps
 >(({ asChild = false, className, ...props }, ref) => {
 	const { today, onTodayChange } = useCalendar()
-	const Comp = asChild ? Slot.Root : Button
+	const Comp = asChild ? Slot : Button
 
 	const handleClick = useCallback(() => {
 		if (today.isSame(dayjs(), "day")) return
