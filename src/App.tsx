@@ -1,11 +1,15 @@
-import { CalendarProvider, CalendarRoot, CalendarHeader, CalendarFooter, CalendarContent } from "./calendar"
+import { CalendarProvider, CalendarRoot, CalendarHeader, CalendarFooter, CalendarContent, CalendarMonthView, CalendarWeekView, CalendarDayView } from "./calendar"
 
 function App() {
   return (
     <CalendarProvider>
       <CalendarRoot>
         <CalendarHeader>Header</CalendarHeader>
-        <CalendarContent>Content</CalendarContent>
+        <CalendarContent>
+          <CalendarMonthView />
+          <CalendarWeekView />
+          <CalendarDayView />
+        </CalendarContent>
         <CalendarFooter>Footer</CalendarFooter>
       </CalendarRoot>
     </CalendarProvider>

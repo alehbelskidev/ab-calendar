@@ -11,9 +11,11 @@ export const DEFAULT_TIMZEONE = Intl.DateTimeFormat().resolvedOptions().timeZone
 type CalendarContextType = {
   timezone: string
   today: Dayjs
+  view: "month" | "week" | "day"
 }
 
 export const CalendarContext = createContext<CalendarContextType>({
   timezone: DEFAULT_TIMZEONE,
   today: dayjs().tz(DEFAULT_TIMZEONE),
+  view: "month",
 })
