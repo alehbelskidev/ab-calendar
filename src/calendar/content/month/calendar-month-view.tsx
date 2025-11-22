@@ -13,7 +13,10 @@ const CalendarMonthView = ({
 	return (
 		<div
 			data-calendar-view="month"
-			className={cn("w-full h-full grid grid-cols-7 grid-rows-7", className)}
+			className={cn(
+				"w-full flex-1 grid grid-cols-7 grid-rows-[auto_repeat(6,1fr)]",
+				className
+			)}
 			{...props}
 		>
 			{children}

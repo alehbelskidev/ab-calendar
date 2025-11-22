@@ -14,7 +14,7 @@ const CalendarRoot = forwardRef<HTMLDivElement, CalendarProps>(
 			<Comp
 				data-slot="calendar-root"
 				ref={ref}
-				className={cn("w-full h-full flex flex-col gap-4", className)}
+				className={cn("w-full flex-1 flex flex-col gap-4", className)}
 				{...props}
 			/>
 		)

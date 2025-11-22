@@ -24,7 +24,7 @@ import {
 
 function App() {
 	return (
-		<div className="min-h-screen w-full p-4">
+		<div className="min-h-screen w-full p-4 flex flex-col">
 			<CalendarProvider>
 				<CalendarRoot>
 					<CalendarHeader>

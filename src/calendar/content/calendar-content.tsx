@@ -49,7 +49,7 @@ const CalendarContent = forwardRef<HTMLDivElement, CalendarContentProps>(
 			<Comp
 				data-slot="calendar-content"
 				ref={ref}
-				className={cn("w-full h-full flex-1", className)}
+				className={cn("w-full flex-1 flex flex-col", className)}
 				{...props}
 				// biome-ignore lint/correctness/noChildrenProp: required for this use case
 				children={recomposedChildren}
