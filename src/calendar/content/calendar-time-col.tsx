@@ -1,29 +1,48 @@
 import { type HTMLAttributes, useMemo } from "react"
 import { cn } from "@/lib/utils"
+import dayjs from "dayjs"
 
 type CalendarTimeColProps = HTMLAttributes<HTMLDivElement> & {
 	colStart?: number
+	hourStart?: number
+	format?: string
+	index?: number
+	total?: number
 }
 
-const CalendarTimeCol = ({ colStart = 1, className }: CalendarTimeColProps) => {
+const CalendarTimeCol = ({
+	colStart = 1,
+	hourStart = 0,
+	format = "HH",
+	index = 1,
+	total = 1,
+	className,
+}: CalendarTimeColProps) => {
+	console.log("index", index, total)
 	const cols = useMemo(() => {
 		return new Array(24).fill(0).map((_, index) => {
+			const hour = index + hourStart
 			const row = index + 2
+			const title = dayjs().hour(hour).format(format)
 			return {
-				title: `${index}:00`,
-				key: `${index}:00`,
+				title,
+				key: `${hour}`,
 				row,
 				col: colStart,
 			}
 		})
-	}, [colStart])
+	}, [colStart, hourStart, format])
 
 	return (
 		<>
 			{cols.map(({ title, key, row, col }) => (
 				<div
 					key={key}
-					className={cn("border-b border-gray-200", className)}
+					className={cn(
+						"border-b border-gray-200 px-1",
+						total > 1 && index > 1 && "border-l",
+						className
+					)}
 					style={{
 						gridColumn: col,
 						gridRow: row,

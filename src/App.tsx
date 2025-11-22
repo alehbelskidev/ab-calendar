@@ -58,7 +58,8 @@ function App() {
 							</CalendarMonthGrid>
 						</CalendarMonthView>
 						<CalendarWeekView>
-							<CalendarTimeCol colStart={1} />
+							<CalendarTimeCol format="h A" hourStart={5} />
+							<CalendarTimeCol format="H" />
 							<CalendarWeekHeader
 								onHeaderCellClick={(date) => console.log(date)}
 							/>
