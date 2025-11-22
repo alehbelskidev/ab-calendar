@@ -1,4 +1,5 @@
 import {
+	CalendarAddEventButton,
 	CalendarContent,
 	CalendarDateTitle,
 	CalendarDayGrid,
@@ -48,6 +49,7 @@ function App() {
 							</CalendarViewSwitcherButton>
 						</CalendarViewSwitcher>
 						<CalendarTodayButton>Today</CalendarTodayButton>
+						<CalendarAddEventButton>Add Event</CalendarAddEventButton>
 					</CalendarHeader>
 					<CalendarContent>
 						<CalendarMonthView>
