@@ -34,8 +34,6 @@ const CalendarWeekView = ({
 
 		let timeColColStart = timeColsIndexes.length ? 1 : 0
 
-		let timeColsCount = 0
-
 		const updatedChildren = childrenArray.map((child: ReactNode) => {
 			if (!isValidElement(child) || typeof child.type === "string") return child
 
@@ -45,16 +43,11 @@ const CalendarWeekView = ({
 				""
 
 			if (displayName === "CalendarTimeCol") {
-				timeColsCount++
 				const newChild = cloneElement(child, {
 					...(child.props as HTMLAttributes<HTMLDivElement>),
 					colStart: timeColColStart,
-					index: timeColsCount,
-					total: timeColsIndexes.length,
 				} as {
 					colStart: number
-					index: number
-					total: number
 					props: HTMLAttributes<HTMLDivElement>
 				})
 				timeColColStart++

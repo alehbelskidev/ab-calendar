@@ -23,6 +23,7 @@ const CalendarWeekGrid = ({ colStart = 1 }: CalendarWeekGridProps) => {
 			return {
 				key: `${hour}-${dayIndex}`,
 				gridClass: `[grid-column:${col}] [grid-row:${row}]`,
+				borderClass: hour < 23 ? "border-b" : "",
 				col,
 				row,
 				hour, // 0-23
@@ -33,10 +34,10 @@ const CalendarWeekGrid = ({ colStart = 1 }: CalendarWeekGridProps) => {
 
 	return (
 		<>
-			{cells.map(({ key, gridClass, col, row }) => (
+			{cells.map(({ key, gridClass, col, row, borderClass }) => (
 				<div
 					key={key}
-					className={cn(gridClass, "border-b border-gray-200")}
+					className={cn("border-gray-200", gridClass, borderClass)}
 					style={{
 						gridColumn: col,
 						gridRow: row,
