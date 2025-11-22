@@ -1,13 +1,25 @@
 import { type Dayjs } from "dayjs"
-import { type HTMLAttributes, useMemo } from "react"
+import {
+	Children,
+	cloneElement,
+	type HTMLAttributes,
+	isValidElement,
+	useMemo,
+} from "react"
 import { cn } from "@/lib/utils"
+import { useCalendar } from "../../use-calendar"
 
 type CalendarWeekGridProps = HTMLAttributes<HTMLDivElement> & {
 	colStart?: number
 	onCellClick?: (date: Dayjs) => void
 }
 
-const CalendarWeekGrid = ({ colStart = 1 }: CalendarWeekGridProps) => {
+const CalendarWeekGrid = ({
+	colStart = 1,
+	children,
+}: CalendarWeekGridProps) => {
+	const { viewDate } = useCalendar()
+
 	const cells = useMemo(() => {
 		// 24 rows (hours) × 7 columns (days) = 168 cells
 		// Grid cells start at row 2 (after header) and column colStart (after time columns)
@@ -28,13 +40,14 @@ const CalendarWeekGrid = ({ colStart = 1 }: CalendarWeekGridProps) => {
 				row,
 				hour, // 0-23
 				dayIndex, // 0-6 (day of week)
+				date: viewDate.hour(hour).add(dayIndex, "day"),
 			}
 		})
-	}, [colStart])
+	}, [colStart, viewDate])
 
 	return (
 		<>
-			{cells.map(({ key, gridClass, col, row, borderClass }) => (
+			{cells.map(({ key, gridClass, col, row, borderClass, date }) => (
 				<div
 					key={key}
 					className={cn("border-gray-200", gridClass, borderClass)}
@@ -42,7 +55,17 @@ const CalendarWeekGrid = ({ colStart = 1 }: CalendarWeekGridProps) => {
 						gridColumn: col,
 						gridRow: row,
 					}}
-				></div>
+				>
+					{Children.map(children, (child) => {
+						if (!isValidElement(child)) {
+							return child
+						}
+						return cloneElement(child, {
+							...(child.props as HTMLAttributes<HTMLButtonElement>),
+							date,
+						} as HTMLAttributes<HTMLButtonElement> & { date: Dayjs })
+					})}
+				</div>
 			))}
 		</>
 	)

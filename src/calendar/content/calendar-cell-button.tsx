@@ -4,14 +4,14 @@ import { Plus } from "lucide-react"
 import { forwardRef, type HTMLAttributes } from "react"
 import { cn } from "@/lib/utils"
 
-type CalendarMonthCellButtonProps = HTMLAttributes<HTMLButtonElement> & {
+type CalendarCellButtonProps = HTMLAttributes<HTMLButtonElement> & {
 	date?: Dayjs
 	asChild?: boolean
 	onClick?: (date: Dayjs) => void
 }
-const CalendarMonthCellButton = forwardRef<
+const CalendarCellButton = forwardRef<
 	HTMLButtonElement,
-	CalendarMonthCellButtonProps
+	CalendarCellButtonProps
 >(({ date, asChild = false, className, onClick, ...props }, ref) => {
 	const Comp = asChild ? Slot : "button"
 	const dateFallback = date ?? dayjs()
@@ -21,7 +21,7 @@ const CalendarMonthCellButton = forwardRef<
 			ref={ref}
 			type="button"
 			className={cn(
-				"flex-1 py-2 w-full hover:bg-gray-50 group flex items-center justify-center transition-colors",
+				"flex-1 py-2 w-full hover:bg-gray-50 group flex items-center justify-center transition-colors h-full",
 				className
 			)}
 			onClick={() => onClick?.(dateFallback)}
@@ -33,6 +33,6 @@ const CalendarMonthCellButton = forwardRef<
 	)
 })
 
-CalendarMonthCellButton.displayName = "CalendarMonthCellButton"
+CalendarCellButton.displayName = "CalendarCellButton"
 
-export default CalendarMonthCellButton
+export default CalendarCellButton

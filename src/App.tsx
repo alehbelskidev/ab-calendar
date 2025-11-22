@@ -1,5 +1,6 @@
 import {
 	CalendarAddEventButton,
+	CalendarCellButton,
 	CalendarContent,
 	CalendarDateTitle,
 	CalendarDayGrid,
@@ -10,7 +11,6 @@ import {
 	CalendarHeaderNav,
 	CalendarHeaderNavNextButton,
 	CalendarHeaderNavPrevButton,
-	CalendarMonthCellButton,
 	CalendarMonthGrid,
 	CalendarMonthHeader,
 	CalendarMonthView,
@@ -57,9 +57,7 @@ function App() {
 								onHeaderCellClick={(date) => console.log(date)}
 							/>
 							<CalendarMonthGrid>
-								<CalendarMonthCellButton
-									onClick={(date) => console.log(date)}
-								/>
+								<CalendarCellButton onClick={(date) => console.log(date)} />
 							</CalendarMonthGrid>
 						</CalendarMonthView>
 						<CalendarWeekView>
@@ -72,14 +70,18 @@ function App() {
 							<CalendarWeekHeader
 								onHeaderCellClick={(date) => console.log(date)}
 							/>
-							<CalendarWeekGrid />
+							<CalendarWeekGrid>
+								<CalendarCellButton onClick={(date) => console.log(date)} />
+							</CalendarWeekGrid>
 						</CalendarWeekView>
 						<CalendarDayView>
 							<CalendarDayHeader format="dddd | MMMM D" />
-							<CalendarTimeCol format="h A" hourStart={5}>
+							<CalendarTimeCol format="h A">
 								<CalendarTimeColHeader>GMT-6</CalendarTimeColHeader>
 							</CalendarTimeCol>
-							<CalendarDayGrid />
+							<CalendarDayGrid>
+								<CalendarCellButton onClick={(date) => console.log(date)} />
+							</CalendarDayGrid>
 						</CalendarDayView>
 					</CalendarContent>
 					<CalendarFooter>Footer</CalendarFooter>
