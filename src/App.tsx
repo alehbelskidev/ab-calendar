@@ -14,6 +14,7 @@ import {
 	CalendarProvider,
 	CalendarRoot,
 	CalendarTimeCol,
+	CalendarTimeColHeader,
 	CalendarTodayButton,
 	CalendarViewSwitcher,
 	CalendarViewSwitcherButton,
@@ -58,8 +59,12 @@ function App() {
 							</CalendarMonthGrid>
 						</CalendarMonthView>
 						<CalendarWeekView>
-							<CalendarTimeCol format="h A" hourStart={5} />
-							<CalendarTimeCol format="H" />
+							<CalendarTimeCol format="h A" hourStart={5}>
+								<CalendarTimeColHeader>GMT-6</CalendarTimeColHeader>
+							</CalendarTimeCol>
+							<CalendarTimeCol format="H">
+								<CalendarTimeColHeader>GMT+1</CalendarTimeColHeader>
+							</CalendarTimeCol>
 							<CalendarWeekHeader
 								onHeaderCellClick={(date) => console.log(date)}
 							/>

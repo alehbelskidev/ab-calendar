@@ -82,8 +82,11 @@ const CalendarWeekView = ({
 	return (
 		<div
 			data-calendar-view="week"
-			className={cn("w-full h-full grid grid-rows-25 flex-1", className)}
-			style={{ gridTemplateColumns }}
+			className={cn("w-full h-full grid flex-1", className)}
+			style={{
+				gridTemplateColumns,
+				gridTemplateRows: "max-content repeat(24, 1fr)",
+			}}
 			{...props}
 		>
 			{updatedChildren}

@@ -1,5 +1,12 @@
 import dayjs from "dayjs"
-import { type HTMLAttributes, useMemo } from "react"
+import {
+	type HTMLAttributes,
+	Children,
+	cloneElement,
+	type ReactNode,
+	useMemo,
+	isValidElement,
+} from "react"
 import { cn } from "@/lib/utils"
 
 type CalendarTimeColProps = HTMLAttributes<HTMLDivElement> & {
@@ -8,6 +15,7 @@ type CalendarTimeColProps = HTMLAttributes<HTMLDivElement> & {
 	format?: string
 	index?: number
 	total?: number
+	children?: ReactNode
 }
 
 const CalendarTimeCol = ({
@@ -17,8 +25,17 @@ const CalendarTimeCol = ({
 	index = 1,
 	total = 1,
 	className,
+	children,
 }: CalendarTimeColProps) => {
-	console.log("index", index, total)
+	const divider = total > 1 && index > 1
+	const updatedChildren = Children.map(children, (child) => {
+		if (!isValidElement(child)) return child
+		return cloneElement(child, {
+			divider,
+			...(child.props as HTMLAttributes<HTMLDivElement>),
+		} as { divider: boolean; props: HTMLAttributes<HTMLDivElement> })
+	})
+
 	const cols = useMemo(() => {
 		return new Array(24).fill(0).map((_, index) => {
 			const hour = index + hourStart
@@ -35,12 +52,13 @@ const CalendarTimeCol = ({
 
 	return (
 		<>
+			{updatedChildren}
 			{cols.map(({ title, key, row, col }) => (
 				<div
 					key={key}
 					className={cn(
 						"border-b border-gray-200 px-1",
-						total > 1 && index > 1 && "border-l",
+						divider && "border-l",
 						className
 					)}
 					style={{
