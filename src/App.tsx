@@ -1,6 +1,8 @@
 import {
 	CalendarContent,
 	CalendarDateTitle,
+	CalendarDayGrid,
+	CalendarDayHeader,
 	CalendarDayView,
 	CalendarFooter,
 	CalendarHeader,
@@ -70,7 +72,13 @@ function App() {
 							/>
 							<CalendarWeekGrid />
 						</CalendarWeekView>
-						<CalendarDayView />
+						<CalendarDayView>
+							<CalendarDayHeader format="dddd | MMMM D" />
+							<CalendarTimeCol format="h A" hourStart={5}>
+								<CalendarTimeColHeader>GMT-6</CalendarTimeColHeader>
+							</CalendarTimeCol>
+							<CalendarDayGrid />
+						</CalendarDayView>
 					</CalendarContent>
 					<CalendarFooter>Footer</CalendarFooter>
 				</CalendarRoot>
