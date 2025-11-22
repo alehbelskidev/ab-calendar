@@ -69,6 +69,7 @@ function App() {
 							</CalendarTimeCol>
 							<CalendarWeekHeader
 								onHeaderCellClick={(date) => console.log(date)}
+								format="dddd, MMMM D"
 							/>
 							<CalendarWeekGrid>
 								<CalendarCellButton onClick={(date) => console.log(date)} />

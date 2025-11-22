@@ -23,6 +23,8 @@ const CalendarWeekGrid = ({
 	const cells = useMemo(() => {
 		// 24 rows (hours) × 7 columns (days) = 168 cells
 		// Grid cells start at row 2 (after header) and column colStart (after time columns)
+		const startOfWeek = viewDate.startOf("week")
+
 		return new Array(24 * 7).fill(0).map((_, index) => {
 			// Row-first iteration: each row has 7 cells (one per day)
 			const hour = Math.floor(index / 7) // 0-23 (24 hours)
@@ -40,7 +42,7 @@ const CalendarWeekGrid = ({
 				row,
 				hour, // 0-23
 				dayIndex, // 0-6 (day of week)
-				date: viewDate.hour(hour).add(dayIndex, "day"),
+				date: startOfWeek.hour(hour).add(dayIndex, "day"),
 			}
 		})
 	}, [colStart, viewDate])
