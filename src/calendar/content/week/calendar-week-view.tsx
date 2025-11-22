@@ -59,24 +59,21 @@ const CalendarWeekView = ({
 		return { updatedChildren, colsCountAdd: timeColColStart - 1 }
 	}, [children])
 
-	console.log(
-		"updatedChildren",
-		updatedChildren,
-		colsCountAdd,
-		`grid-cols-${colsCountAdd + 7}`
-	)
-
-	const totalCols = 7 + colsCountAdd
+	const gridTemplateColumns = useMemo(() => {
+		if (colsCountAdd === 0) {
+			return "repeat(7, 1fr)"
+		}
+		if (colsCountAdd === 1) {
+			return "48px repeat(7, 1fr)"
+		}
+		return `repeat(${colsCountAdd}, 48px) repeat(7, 1fr)`
+	}, [colsCountAdd])
 
 	return (
 		<div
 			data-calendar-view="week"
-			className={cn(
-				"w-full h-full grid grid-rows-25",
-				`grid-cols-[repeat(${totalCols},minmax(0,1fr))]`,
-				className
-			)}
-			style={{ gridTemplateColumns: `repeat(${totalCols}, minmax(0, 1fr))` }}
+			className={cn("w-full h-full grid grid-rows-25 flex-1", className)}
+			style={{ gridTemplateColumns }}
 			{...props}
 		>
 			{updatedChildren}

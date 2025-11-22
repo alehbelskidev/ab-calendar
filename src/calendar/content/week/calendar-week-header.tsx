@@ -14,7 +14,6 @@ const CalendarWeekHeader = ({
 	onHeaderCellClick,
 	colStart = 1,
 }: CalendarWeekHeaderProps) => {
-	console.log("week header colStart", colStart)
 	const headers = useMemo(() => {
 		return new Array(7).fill(0).map((_, index) => {
 			const date = dayjs().startOf("week").add(index, "day")
@@ -37,7 +36,7 @@ const CalendarWeekHeader = ({
 					type="button"
 					key={key}
 					className={cn(
-						"text-center font-semibold border-b cursor-pointer",
+						"text-center font-semibold cursor-pointer",
 						className,
 						gridClass
 					)}

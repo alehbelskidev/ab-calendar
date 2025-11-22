@@ -18,14 +18,12 @@ const CalendarTimeCol = ({ colStart = 1, className }: CalendarTimeColProps) => {
 		})
 	}, [colStart])
 
-	console.log("time col colStart", colStart)
-
 	return (
 		<>
 			{cols.map(({ title, key, row, col }) => (
 				<div
 					key={key}
-					className={cn(className)}
+					className={cn("border-b border-gray-200", className)}
 					style={{
 						gridColumn: col,
 						gridRow: row,

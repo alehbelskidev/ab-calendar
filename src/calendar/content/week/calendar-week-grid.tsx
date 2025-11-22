@@ -8,8 +8,6 @@ type CalendarWeekGridProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 const CalendarWeekGrid = ({ colStart = 1 }: CalendarWeekGridProps) => {
-	console.log("CalendarWeekGrid colStart:", colStart)
-
 	const cells = useMemo(() => {
 		// 24 rows (hours) × 7 columns (days) = 168 cells
 		// Grid cells start at row 2 (after header) and column colStart (after time columns)
@@ -38,7 +36,7 @@ const CalendarWeekGrid = ({ colStart = 1 }: CalendarWeekGridProps) => {
 			{cells.map(({ key, gridClass, col, row }) => (
 				<div
 					key={key}
-					className={cn(gridClass, "border border-gray-200")}
+					className={cn(gridClass, "border-b border-gray-200")}
 					style={{
 						gridColumn: col,
 						gridRow: row,
