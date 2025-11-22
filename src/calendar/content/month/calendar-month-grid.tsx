@@ -38,7 +38,7 @@ const CalendarMonthGrid = ({
 			return {
 				title: date.format(cellFormat),
 				key: date.format("YYYY-MM-DD"),
-				gridClass: `col-start-${col + 1} row-start-${row + 1}`,
+				gridClass: `[grid-row:${row + 1}] [grid-column:${col + 1}] ${!col ? "border-l" : ""} ${row === 1 ? "border-t" : ""}`,
 				isCurrentMonth: date.isSame(viewDate, "month"),
 				isToday: date.isSame(today, "day"),
 				date,
@@ -52,7 +52,7 @@ const CalendarMonthGrid = ({
 				<div
 					key={key}
 					className={cn(
-						"text-center border-b border-r flex flex-col",
+						"text-center border-b border-r flex flex-col gap-1",
 						!isCurrentMonth ? differentMonthCellClass : "",
 						isToday ? todayCellClass : "",
 						cellClass,

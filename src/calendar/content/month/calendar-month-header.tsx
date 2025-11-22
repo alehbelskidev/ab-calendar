@@ -32,7 +32,7 @@ const CalendarMonthHeader = ({
 					type="button"
 					key={key}
 					className={cn(
-						"text-center font-semibold border-b cursor-pointer",
+						"text-center font-semibold cursor-pointer",
 						className,
 						gridClass
 					)}
