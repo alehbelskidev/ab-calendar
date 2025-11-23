@@ -1,6 +1,7 @@
-import dayjs, { Dayjs } from "dayjs"
+import { type Dayjs } from "dayjs"
 import { type HTMLAttributes, useMemo } from "react"
 import { cn } from "@/lib/utils"
+import { useCalendar } from "../../use-calendar"
 
 type CalendarDayHeaderProps = HTMLAttributes<HTMLDivElement> & {
 	format?: string
@@ -14,8 +15,9 @@ const CalendarDayHeader = ({
 	onHeaderCellClick,
 	colStart = 1,
 }: CalendarDayHeaderProps) => {
+	const { viewDate } = useCalendar()
 	const { title, gridClass, col, date } = useMemo(() => {
-		const date = dayjs().startOf("day")
+		const date = viewDate.startOf("day")
 
 		const col = colStart + 1
 		return {
@@ -24,7 +26,7 @@ const CalendarDayHeader = ({
 			col,
 			date,
 		}
-	}, [format, colStart])
+	}, [format, colStart, viewDate])
 
 	return (
 		<button

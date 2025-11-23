@@ -11,25 +11,26 @@ type CalendarDateTitleProps = HTMLAttributes<HTMLHeadingElement> & {
 const CalendarDateTitle = forwardRef<
 	HTMLHeadingElement,
 	CalendarDateTitleProps
->(({ format = "MMMM, YYYY", asChild = false, className, ...props }, ref) => {
+>(({ format, asChild = false, className, ...props }, ref) => {
 	const { viewDate, view } = useCalendar()
 	const Comp = asChild ? Slot : "h2"
 
-	const smartFormat = useMemo(() => {
-		if (format) return format
+	const displayDate = useMemo(() => {
+		console.log(format)
+		if (format != null) return viewDate.format(format)
 
 		if (view === "month") {
-			return "MMMM YYYY"
+			return viewDate.format("MMMM YYYY")
 		} else if (view === "week") {
-			return "MMMM YYYY"
+			return `${viewDate.format("MMMM D, YYYY")} - ${viewDate.add(1, "week").format("MMMM D, YYYY")}`
 		} else {
-			return "MMMM D, YYYY"
+			return viewDate.format("MMMM D, YYYY")
 		}
-	}, [view, format])
+	}, [view, format, viewDate])
 
 	return (
 		<Comp ref={ref} className={cn("text-2xl font-bold", className)} {...props}>
-			{props.children ?? viewDate.format(smartFormat)}
+			{props.children ?? displayDate}
 		</Comp>
 	)
 })
